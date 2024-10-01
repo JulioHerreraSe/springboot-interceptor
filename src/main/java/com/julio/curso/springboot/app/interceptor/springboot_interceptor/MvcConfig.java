@@ -14,10 +14,11 @@ public class MvcConfig implements WebMvcConfigurer{
     @Qualifier("timeInterceptor")
     private HandlerInterceptor timeInterceptor;
 
+    @SuppressWarnings("null")
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        
-        registry.addInterceptor(timeInterceptor);
+        registry.addInterceptor(timeInterceptor).addPathPatterns("/app/bar", "/app/foo");
+        //registry.addInterceptor(timeInterceptor).excludePathPatterns("/app/*");
     }
 
 }
